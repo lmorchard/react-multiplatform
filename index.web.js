@@ -1,4 +1,6 @@
-import * as React from "react";
+var React = require('react');
+
+var _ = require('lodash');
 
 var Child = React.createClass({
   render: function(){

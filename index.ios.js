@@ -12,6 +12,8 @@ var {
   View,
 } = React;
 
+var _ = require('lodash');
+
 var NativeApp = React.createClass({
   render: function() {
     return (

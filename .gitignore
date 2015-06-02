@@ -1,6 +1,6 @@
 *.sw?
 
-dist/
+web-dist/
 
 # OSX
 #
