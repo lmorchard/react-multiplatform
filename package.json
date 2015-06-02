@@ -21,7 +21,13 @@
   "dependencies": {
     "lodash": "^3.9.3",
     "react": "^0.13.3",
-    "react-native": "^0.4.4"
+    "react-native": "^0.4.4",
+    "ampersand-collection": "^1.3.16",
+    "ampersand-router": "^1.0.5",
+    "ampersand-state": "^4.3.12",
+    "ampersand-subcollection": "^1.4.5",
+    "ampersand-view": "^7.1.4",
+    "debounce": "^1.0.0"
   },
   "devDependencies": {
     "babel": "^5.4.7",
