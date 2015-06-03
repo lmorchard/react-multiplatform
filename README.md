@@ -44,6 +44,9 @@ Here are some notes to myself (and others) as I bungle my way through this.
 
 ### Issues
 
+* File watching and changes between Gulp and the React Native packager seem to
+  be causing perpetual reciprocal live reloads.
+
 * Web APIs are mostly unavailable in React Native
   
   * There are some polyfills for timers, network, geo, and flexbox

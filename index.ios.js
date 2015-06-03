@@ -71,7 +71,9 @@ var TodoList = React.createClass({
   },
 
   updateDataSource() {
-    // Make a clone of the collection model set
+    // Make a clone of the collection model set, because just passing the
+    // collection directly prevents the DataSource from diffing previous & new
+    // sets to detect changes.
     // TODO: Is there a better way to do this?
     var rows = this.state.collection.map((model) => model);
     return this.state.dataSource.cloneWithRows(rows);
