@@ -3,6 +3,20 @@
 This is an experiment to build a React web app and a React Native iOS app that
 share as much as possible.
 
+## Hacking
+
+¯\_(ツ)_/¯
+
+```
+npm install
+gulp server
+# Open NativeApp.xcodeproj in XCode, hit Run
+```
+
+## Testing
+
+¯\_(ツ)_/¯
+
 ## Working Notes
 
 Here are some notes to myself (and others) as I bungle my way through this.
@@ -30,8 +44,11 @@ Here are some notes to myself (and others) as I bungle my way through this.
 
 ### Issues
 
-* Web APIs are unavailable in React Native
+* Web APIs are mostly unavailable in React Native
   
-  * There are some polyfills for web APIs, but not a comprehensive set. Maybe
-    that list will grow?
+  * There are some polyfills for timers, network, geo, and flexbox
 
+* The web buildchain is producing a 3.1mb JS bundle - WTF?!
+
+  * Turning off debug in browserify and adding uglify reduces to ~265k, but
+    that's still pretty huge.
