@@ -19,15 +19,14 @@
   },
   "homepage": "https://github.com/lmorchard/react-multiplatform",
   "dependencies": {
-    "lodash": "^3.9.3",
-    "react": "^0.13.3",
-    "react-native": "^0.4.4",
     "ampersand-collection": "^1.3.16",
     "ampersand-router": "^1.0.5",
     "ampersand-state": "^4.3.12",
     "ampersand-subcollection": "^1.4.5",
-    "ampersand-view": "^7.1.4",
-    "debounce": "^1.0.0"
+    "debounce": "^1.0.0",
+    "lodash": "^3.9.3",
+    "react": "^0.13.3",
+    "react-native": "^0.4.4"
   },
   "devDependencies": {
     "babel": "^5.4.7",
@@ -35,7 +34,9 @@
     "browserify": "^10.2.3",
     "gulp": "^3.9.0",
     "gulp-connect": "^2.2.0",
+    "gulp-uglify": "^1.2.0",
     "reactify": "^1.1.1",
+    "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "vinyl-transform": "^1.0.0"
   }

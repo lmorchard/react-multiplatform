@@ -5,22 +5,22 @@ var gulp = require('gulp');
 var path = require('path');
 var babelify = require("babelify");
 var reactify = require('reactify');
+var uglify = require('gulp-uglify');
 var source = require('vinyl-source-stream');
-var transform = require('vinyl-transform');
+var buffer = require('vinyl-buffer');
 
 gulp.task('build', [ 'web-build' ]);
 
 gulp.task('web-build', [ 'markup', 'browserify-index' ]);
 
 gulp.task('browserify-index', function () {
-  return browserify({
-      entries: ['./index.web.js'],
-      debug: true
-    })
+  return browserify({ entries: ['./index.web.js'], debug: false })
     .transform(babelify)
-    .transform(reactify)
+    .transform(reactify) // Unnecessary? babel handles this?
     .bundle()
     .pipe(source('index.web.js'))
+    .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest('./web-dist'));
 });
 
