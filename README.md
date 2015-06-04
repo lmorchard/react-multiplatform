@@ -23,18 +23,12 @@ Here are some notes to myself (and others) as I bungle my way through this.
 
 ### TODO / Questions
 
-* Might try converting the [Ampersand TodoMVC example][todomvc]
-
-* Can I share JS libs between apps?
-
-* Can I share React components?
-
-  * Super-classes, at least?
+* Where's Android? Unreleased, but under development?
 
 * Building & launching the iOS dev app requires launching XCode. I wonder if I
   could just run that all from the command line, ideally from gulp
 
-* Try merging React Native packager.js stuff into gulp build
+* Try merging React Native packager.js stuff into gulp build?
 
 [todomvc]: https://github.com/tastejs/todomvc/tree/master/examples/ampersand
 
@@ -43,6 +37,8 @@ Here are some notes to myself (and others) as I bungle my way through this.
 * Pros
 
   * React base component API is the same between web & native
+
+  * Many common pieces of view/model integration can be shared via mixins
 
 * Cons
 
