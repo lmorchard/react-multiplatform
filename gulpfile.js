@@ -38,8 +38,11 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function () {
-  gulp.watch('./*.html', ['build']);
-  gulp.watch('./**/*.js', ['build']);
+  // NOTE: Be very specific about what files to watch, so that we don't get
+  // into a loop with React packager.
+  gulp.watch('./index.html', ['build']);
+  gulp.watch('./lib/**/*.js', ['build']);
+  gulp.watch('./index.web.js', ['build']);
 });
 
 gulp.task('server', ['build', 'connect', 'watch']);
