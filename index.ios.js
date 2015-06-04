@@ -7,9 +7,13 @@ var {
   Text,
   View,
   ListView,
+  SwitchIOS,
+  TouchableHighlight,
 } = React;
 
 var _ = require('lodash');
+
+var Views = require('./lib/views');
 
 var TodosCollection = new (require('./lib/models/todos'))();
 
@@ -37,12 +41,14 @@ var styles = StyleSheet.create({
 });
 
 var TodoList = React.createClass({
+  mixins: [Views.TodoListCommonMixin],
 
   render() {
     return (
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={(item) => <TodoItem item={item} />}
+        renderRow={(item) =>
+          <TodoItem key={item.cid} item={item} />}
         style={styles.listView}
       />
     );
@@ -61,19 +67,15 @@ var TodoList = React.createClass({
     // TODO: Should this happen in getInitialState instead?
     this.setState({ dataSource: this.updateDataSource() });
 
-    this.state.collection.on('add remove change', () => {
+    this.state.collection.on('add remove', () => {
       this.setState({ dataSource: this.updateDataSource() });
     });
   },
 
-  componentWillUnmount() {
-	  this.state.collection.off(null, null, this);
-  },
-
   updateDataSource() {
-    // Make a clone of the collection model set, because just passing the
-    // collection directly prevents the DataSource from diffing previous & new
-    // sets to detect changes.
+    // NOTE: The DataSource retains a reference to the previous model list in
+    // order to diff it against new lists to detect changes. So, we have to
+    // make a fresh clone of the list, every time.
     // TODO: Is there a better way to do this?
     var rows = this.state.collection.map((model) => model);
     return this.state.dataSource.cloneWithRows(rows);
@@ -84,18 +86,22 @@ var TodoList = React.createClass({
 AppRegistry.registerComponent('TodoList', () => TodoList);
 
 var TodoItem = React.createClass({
+  mixins: [Views.TodoItemCommonMixin],
   render() {
     return (
       <View style={styles.container}>
-        <Text>{this.state.item.title} - {this.state.item.completed ? 'true' : 'false'}</Text>
+        <SwitchIOS
+          onValueChange={this.handleCompletedChange}
+          value={this.state.item.completed} />
+        <TouchableHighlight
+          activeOpacity={0.6}
+          underlayColor={'red'}
+          onPress={this.handleDelete}>
+          <Text>Delete</Text>
+        </TouchableHighlight>
+        <Text>{this.state.item.title}</Text>
       </View>
     );
-  },
-  getInitialState() {
-    return { item: this.props.item };
-  },
-  componentWillReceiveProps(props) {
-    this.setState({ item: props.item });
   }
 });
 

@@ -1,36 +1,42 @@
 var React = require('react');
 
+var Views = require('./lib/views');
+
 var TodosCollection = new (require('./lib/models/todos'))();
 
 var TodoList = React.createClass({
+  mixins: [Views.TodoListCommonMixin],
   render() {
-    var items = this.state.collection.map((item) => {
-      return ( <TodoItem item={item} />);
-    });
-    return ( <ul>{items}</ul>);
+    return (
+      <ul>
+        {this.state.collection.map((item) =>
+          <TodoItem key={item.cid} item={item} />)}
+      </ul>
+    );
   },
   getInitialState() {
     return { collection: this.props.collection };
   },
   componentDidMount() {
-	  this.state.collection.on('add remove change', () => this.forceUpdate());
-  },
-  componentWillUnmount() {
-	  this.state.collection.off(null, null, this);
+	  this.state.collection.on('add remove', () => this.forceUpdate());
   }
 });
 
 var TodoItem = React.createClass({
+  mixins: [Views.TodoItemCommonMixin],
   render() {
     return (
-      <li>{this.state.item.title} - {this.state.item.completed ? 'true' : 'false'}</li>
+      <li>
+        <label>
+          <input type="checkbox"
+            onChange={(event) => this.handleCompletedChange(event.target.checked)}
+            checked={this.state.item.completed} />
+          <button
+            onClick={this.handleDelete}>Delete</button>
+          <span>{this.state.item.title}</span>
+        </label>
+      </li>
     );
-  },
-  getInitialState() {
-    return { item: this.props.item };
-  },
-  componentWillReceiveProps(props) {
-    this.setState({ item: props.item });
   }
 });
 
