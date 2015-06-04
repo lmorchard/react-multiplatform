@@ -1,21 +1,19 @@
 'use strict';
 
 var React = require('react-native');
+
 var {
   AppRegistry,
   StyleSheet,
   Text,
+  TextInput,
   View,
   ListView,
   SwitchIOS,
   TouchableHighlight,
 } = React;
 
-var _ = require('lodash');
-
 var Views = require('./lib/views');
-
-var TodosCollection = new (require('./lib/models/todos'))();
 
 var styles = StyleSheet.create({
   container: {
@@ -35,8 +33,13 @@ var styles = StyleSheet.create({
     marginBottom: 5,
   },
   listView: {
-    paddingTop: 20,
+    marginTop: 20,
     backgroundColor: '#f5fcff'
+  },
+  todoField: {
+    height: 50,
+    borderColor: 'gray',
+    borderWidth: 1
   }
 });
 
@@ -107,15 +110,29 @@ var TodoItem = React.createClass({
 
 AppRegistry.registerComponent('TodoItem', () => TodoItem);
 
-var NativeApp = React.createClass({
+var App = React.createClass({
+  mixins: [Views.AppCommonMixin],
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>TODO LIST</Text>
-        <TodoList collection={TodosCollection} />
+        <TextInput style={styles.todoField}
+          ref="newTodoField"
+          value=""
+          placeholder="tap to add a new item"
+          onSubmitEditing={this.handleNewTodoSubmit} />
+        <TodoList collection={this.state.todos} />
       </View>
     );
+  },
+  handleNewTodoSubmit(event) {
+    var val = event.nativeEvent.text.trim();
+    this.refs.newTodoField.setNativeProps({text: ''});
+    this.state.todos.add({
+      title: val,
+      completed: false
+    });
   }
 });
 
-AppRegistry.registerComponent('NativeApp', () => NativeApp);
+AppRegistry.registerComponent('NativeApp', () => App);
