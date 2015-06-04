@@ -5,7 +5,7 @@ share as much as possible.
 
 ## Hacking
 
-¯\_(ツ)_/¯
+¯\\_(ツ)_/¯
 
 ```
 npm install
@@ -15,7 +15,7 @@ gulp server
 
 ## Testing
 
-¯\_(ツ)_/¯
+¯\\_(ツ)_/¯
 
 ## Working Notes
 
@@ -29,12 +29,26 @@ Here are some notes to myself (and others) as I bungle my way through this.
 
 * Can I share React components?
 
+  * Super-classes, at least?
+
 * Building & launching the iOS dev app requires launching XCode. I wonder if I
   could just run that all from the command line, ideally from gulp
 
+* Try merging React Native packager.js stuff into gulp build
+
 [todomvc]: https://github.com/tastejs/todomvc/tree/master/examples/ampersand
 
-### Process
+### Pros & Cons
+
+* Pros
+
+  * React base component API is the same between web & native
+
+* Cons
+
+  * Component set differs between web & native
+
+### Decisions & Choices
 
 * Using gulp + browserify + babelify (es6) for web app build chain
 
@@ -42,7 +56,10 @@ Here are some notes to myself (and others) as I bungle my way through this.
 
 [jsenv]: http://facebook.github.io/react-native/docs/javascript-environment.html#content
 
-### Issues
+### Issues & Papercuts
+
+* React native live reload pulls away focus from editor & forces Chrome to the
+  foreground on every save.
 
 * File watching and changes between Gulp and the React Native packager seem to
   be causing perpetual reciprocal live reloads.
