@@ -36,9 +36,11 @@ Here are some notes to myself (and others) as I bungle my way through this.
 
 * Pros
 
-  * React base component API is the same between web & native
+  * React base component API is (mostly) the same between web & native
 
   * Many common pieces of view/model integration can be shared via mixins
+
+  * Live Reload & Debug in Chrome are neat features for Native
 
 * Cons
 
