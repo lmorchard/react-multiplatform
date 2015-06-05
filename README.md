@@ -54,17 +54,18 @@ Here are some notes to myself (and others) as I bungle my way through this.
 
 [jsenv]: http://facebook.github.io/react-native/docs/javascript-environment.html#content
 
+### Random Observations
+
+* View is the new div
+
 ### Issues & Papercuts
 
 * React native live reload pulls away focus from editor & forces Chrome to the
   foreground on every save.
 
-* File watching and changes between Gulp and the React Native packager seem to
-  be causing perpetual reciprocal live reloads.
-
 * Web APIs are mostly unavailable in React Native
   
-  * There are some polyfills for timers, network, geo, and flexbox
+  * There are polyfills for timers, network, geo, and flexbox
 
 * The web buildchain is producing a 3.1mb JS bundle - WTF?!
 
