@@ -17,31 +17,64 @@ var Views = require('./lib/views');
 
 var styles = StyleSheet.create({
   container: {
+    padding: 10,
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch'
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  todoList: {
+    padding: 10
   },
-  listView: {
-    marginTop: 20,
-    backgroundColor: '#f5fcff'
+  todoItem: {
+    height: 40,
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
   },
-  editField: {
-    height: 50,
+  todoCompleted: {
+    padding: 10
+  },
+  todoTitle: {
+    padding: 10,
+    fontSize: 16,
+    flex: 1
+  },
+  todoEditGroup: {
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch'
+  },
+  todoDeleteButton: {
+    color: '#fff',
+    backgroundColor: '#f33',
+    right: 0,
     borderColor: 'gray',
     borderWidth: 1
   },
-  newField: {
+  todoDeleteButtonText: {
+    padding: 3
+  },
+  todoEditField: {
+    flex: 1,
+    fontSize: 16,
+    width: 200,
+    height: 35,
+    padding: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    borderColor: 'gray',
+    borderWidth: 1
+  },
+  todoNewField: {
+    padding: 5,
+    fontSize: 16,
     height: 50,
     borderColor: 'gray',
     borderWidth: 1
@@ -54,10 +87,10 @@ var TodoList = React.createClass({
   render() {
     return (
       <ListView
+        style={styles.todoList}
         dataSource={this.state.dataSource}
         renderRow={(item) =>
           <TodoItem key={item.cid} item={item} />}
-        style={styles.listView}
       />
     );
   },
@@ -97,28 +130,30 @@ var TodoItem = React.createClass({
   mixins: [Views.TodoItemCommonMixin],
   render() {
     var title = (!this.state.editing) ? (
-      <Text onPress={this.handleEditStart}>
+      <Text style={styles.todoTitle} onPress={this.handleEditStart}>
         {this.state.item.title}
       </Text>
     ) : (
-      <View>
-        <TouchableHighlight
-          activeOpacity={0.6}
-          underlayColor={'red'}
-          onPress={this.handleDelete}>
-          <Text>Delete</Text>
-        </TouchableHighlight>
+      <View style={styles.todoEditGroup}>
         <TextInput
-          style={styles.editField}
+          style={styles.todoEditField}
           ref="editField"
           autoFocus={true}
           value={this.state.item.title}
           onSubmitEditing={this.handleEditSubmit} />
+        <TouchableHighlight
+          style={styles.todoDeleteButton}
+          activeOpacity={0.6}
+          underlayColor={'red'}
+          onPress={this.handleDelete}>
+          <Text style={styles.todoDeleteButtonText}>Delete</Text>
+        </TouchableHighlight>
       </View>
     );
     return (
-      <View style={styles.container}>
+      <View style={styles.todoItem}>
         <SwitchIOS
+          style={styles.todoCompleted}
           onValueChange={this.handleCompletedChange}
           value={this.state.item.completed} />
         {title}
@@ -141,7 +176,7 @@ var App = React.createClass({
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>TODO LIST</Text>
-        <TextInput style={styles.newField}
+        <TextInput style={styles.todoNewField}
           ref="newField"
           value=""
           placeholder="tap to add a new item"
