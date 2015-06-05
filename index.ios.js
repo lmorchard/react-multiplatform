@@ -36,7 +36,12 @@ var styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: '#f5fcff'
   },
-  todoField: {
+  editField: {
+    height: 50,
+    borderColor: 'gray',
+    borderWidth: 1
+  },
+  newField: {
     height: 50,
     borderColor: 'gray',
     borderWidth: 1
@@ -91,20 +96,40 @@ AppRegistry.registerComponent('TodoList', () => TodoList);
 var TodoItem = React.createClass({
   mixins: [Views.TodoItemCommonMixin],
   render() {
-    return (
-      <View style={styles.container}>
-        <SwitchIOS
-          onValueChange={this.handleCompletedChange}
-          value={this.state.item.completed} />
+    var title = (!this.state.editing) ? (
+      <Text onPress={this.handleEditStart}>
+        {this.state.item.title}
+      </Text>
+    ) : (
+      <View>
         <TouchableHighlight
           activeOpacity={0.6}
           underlayColor={'red'}
           onPress={this.handleDelete}>
           <Text>Delete</Text>
         </TouchableHighlight>
-        <Text>{this.state.item.title}</Text>
+        <TextInput
+          style={styles.editField}
+          ref="editField"
+          autoFocus={true}
+          value={this.state.item.title}
+          onSubmitEditing={this.handleEditSubmit} />
       </View>
     );
+    return (
+      <View style={styles.container}>
+        <SwitchIOS
+          onValueChange={this.handleCompletedChange}
+          value={this.state.item.completed} />
+        {title}
+      </View>
+    );
+  },
+  handleEditSubmit(event) {
+    var val = event.nativeEvent.text.trim();
+    this.refs.editField.setNativeProps({text: ''});
+    this.setState({ editing: false });
+    this.state.item.title = val;
   }
 });
 
@@ -116,8 +141,8 @@ var App = React.createClass({
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>TODO LIST</Text>
-        <TextInput style={styles.todoField}
-          ref="newTodoField"
+        <TextInput style={styles.newField}
+          ref="newField"
           value=""
           placeholder="tap to add a new item"
           onSubmitEditing={this.handleNewTodoSubmit} />
@@ -127,7 +152,7 @@ var App = React.createClass({
   },
   handleNewTodoSubmit(event) {
     var val = event.nativeEvent.text.trim();
-    this.refs.newTodoField.setNativeProps({text: ''});
+    this.refs.newField.setNativeProps({text: ''});
     this.state.todos.add({
       title: val,
       completed: false

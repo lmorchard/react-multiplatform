@@ -2,7 +2,8 @@ var React = require('react');
 
 var Views = require('./lib/views');
 
-var ENTER_KEY = 13;
+var KEY_ENTER = 13;
+var KEY_ESC = 27;
 
 var TodoList = React.createClass({
   mixins: [Views.TodoListCommonMixin],
@@ -25,18 +26,38 @@ var TodoList = React.createClass({
 var TodoItem = React.createClass({
   mixins: [Views.TodoItemCommonMixin],
   render() {
+    var title = (!this.state.editing) ? (
+      <span onClick={this.handleEditStart}>
+        {this.state.item.title}
+      </span>
+    ) : (
+      <span>
+        <button onClick={this.handleDelete}>Delete</button>
+        <input type="text"
+          ref="editField"
+          autoFocus={true}
+          defaultValue={this.state.item.title}
+          onKeyDown={this.handleEditKeyDown} />
+      </span>
+    );
     return (
       <li>
-        <label>
-          <input type="checkbox"
-            onChange={(event) => this.handleCompletedChange(event.target.checked)}
-            checked={this.state.item.completed} />
-          <button
-            onClick={this.handleDelete}>Delete</button>
-          <span>{this.state.item.title}</span>
-        </label>
+        <input type="checkbox"
+          onChange={(event) => this.handleCompletedChange(event.target.checked)}
+          checked={this.state.item.completed} />
+        {title}
       </li>
     );
+  },
+  handleEditKeyDown(event) {
+    switch (event.which) {
+      case KEY_ENTER:
+        var val = this.refs.editField.getDOMNode().value.trim();
+        this.setState({ editing: false });
+        this.state.item.title = val;
+      case KEY_ESC:
+        this.setState({ editing: false });
+    }
   }
 });
 
@@ -57,7 +78,7 @@ var App = React.createClass({
     )
   },
   handleNewTodoKeyDown(event) {
-    if (event.which !== ENTER_KEY) { return; }
+    if (event.which !== KEY_ENTER) { return; }
     var val = this.refs.newField.getDOMNode().value.trim();
     this.refs.newField.getDOMNode().value = '';
     this.state.todos.add({
