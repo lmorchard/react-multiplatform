@@ -23,6 +23,14 @@ Here are some notes to myself (and others) as I bungle my way through this.
 
 ### TODO / Questions
 
+* Add completed / active flags
+
+* Add uncompleted / completed / active list filtering
+
+* Add saving to a remote server?
+
+* Add websocket sync to a multiplayer server for the hell of it?
+
 * Where's Android? Unreleased, but under development?
 
 * Building & launching the iOS dev app requires launching XCode. I wonder if I
