@@ -14,19 +14,21 @@ gulp.task('build', [ 'web-build' ]);
 gulp.task('web-build', [ 'markup', 'browserify-index' ]);
 
 gulp.task('browserify-index', function () {
-  return browserify({ entries: ['./index.web.js'], debug: false })
+  return browserify({ entries: ['./index.web.js'], debug: true })
     .transform(babelify)
     .transform(reactify) // Unnecessary? babel handles this?
     .bundle()
     .pipe(source('index.web.js'))
-    .pipe(buffer())
-    .pipe(uglify())
-    .pipe(gulp.dest('./web-dist'));
+    //.pipe(buffer())
+    //.pipe(uglify())
+    .pipe(gulp.dest('./web-dist'))
+    .pipe(connect.reload());
 });
 
 gulp.task('markup', function () {
   return gulp.src('./*.html')
-    .pipe(gulp.dest('./web-dist'));
+    .pipe(gulp.dest('./web-dist'))
+    .pipe(connect.reload());
 });
 
 gulp.task('connect', function() {
