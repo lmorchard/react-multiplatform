@@ -23,11 +23,11 @@ Here are some notes to myself (and others) as I bungle my way through this.
 
 ### TODO / Questions
 
+* Button to purge completed items
+
 * Add saving to a remote server?
 
 * Add websocket sync to a multiplayer server for the hell of it?
-
-* Weird mix of spaces and tabs in code borrowed from TodoMVC. Fix it!
 
 * Where's Android? Unreleased, but under development?
 
