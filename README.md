@@ -23,6 +23,10 @@ Here are some notes to myself (and others) as I bungle my way through this.
 
 ### TODO / Questions
 
+* Web app manifest
+
+* Use node-firefox modules in gulp to deploy to fxos phones?
+
 * Button to purge completed items
 
 * Add saving to a remote server?
@@ -35,6 +39,12 @@ Here are some notes to myself (and others) as I bungle my way through this.
   could just run that all from the command line, ideally from gulp
 
 * Try merging React Native packager.js stuff into gulp build?
+
+* Live-update of inline styles without full reload would be great.
+
+* How to handle localization? General JS gettext stuff?
+
+* Arrays of inline styles - thought React supported them, maybe not?
 
 [todomvc]: https://github.com/tastejs/todomvc/tree/master/examples/ampersand
 
@@ -51,6 +61,9 @@ Here are some notes to myself (and others) as I bungle my way through this.
 * Cons
 
   * Component set differs between web & native
+
+  * Inline styles work in both, share similar CSS syntax, but cannot be
+    practically shared
 
 ### Decisions & Choices
 
