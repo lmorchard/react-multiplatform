@@ -27,13 +27,29 @@ Here are some notes to myself (and others) as I bungle my way through this.
 
 * Web app manifest
 
-* Use node-firefox modules in gulp to deploy to fxos phones?
+* Deploy web app to gh-pages
+
+* node-firefox deployment in gulp is a rough story right now
+
+  * Would be nice if I could somehow make it live-reload rather than completely
+    uninstalling, re-installing, and re-launching
+
+* Build a non-dev version of the iOS app
+
+  * Never built / deployed an iOS app before, no idea how to do that.
 
 * Button to purge completed items
 
-* Add saving to a remote server?
+* Should inline styles actually live with respective components rather than in
+  a central styles.js?
 
-* Add websocket sync to a multiplayer server for the hell of it?
+* Exercise some more APIs?
+
+  * Add saving to a remote server?
+
+  * Add websocket sync to a multiplayer server for the hell of it?
+
+  * Geo for place-specific todos?
 
 * Where's Android? Unreleased, but under development?
 

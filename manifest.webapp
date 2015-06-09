@@ -1,0 +1,10 @@
+{
+  "name": "TodoMultiplatform",
+  "description": "This is a todo app available on many platforms",
+  "launch_path": "index.html",
+  "developer": {
+    "name": "Les Orchard <me@lmorchard.com>",
+    "url": "http://lmorchard.com"
+  },
+  "default_locale": "en"
+}
