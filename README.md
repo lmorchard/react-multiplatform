@@ -3,6 +3,8 @@
 This is an experiment to build a React web app and a React Native iOS app that
 share as much as possible.
 
+![Work in progress photo](https://raw.githubusercontent.com/lmorchard/react-multiplatform/master/photo.png)
+
 ## Hacking
 
 ¯\\_(ツ)_/¯
