@@ -25,8 +25,6 @@ Here are some notes to myself (and others) as I bungle my way through this.
 
 ### TODO / Questions
 
-* Web app manifest
-
 * Deploy web app to gh-pages
 
 * node-firefox deployment in gulp is a rough story right now
@@ -52,6 +50,8 @@ Here are some notes to myself (and others) as I bungle my way through this.
   * Geo for place-specific todos?
 
 * Where's Android? Unreleased, but under development?
+
+  * [Looks like ETA is 6 months or so](http://facebook.github.io/react/blog/2015/03/30/community-roundup-26.html)
 
 * Building & launching the iOS dev app requires launching XCode. I wonder if I
   could just run that all from the command line, ideally from gulp
