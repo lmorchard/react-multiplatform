@@ -29,10 +29,10 @@ One of the goals of this thing is to see how much code can be shared between
 platforms using React for web and React Native. So, I counted some lines of
 code.
 
-On the model side, about 74% code is shared, with 12-14% devoted to each
+On the model side, about 74% code is shared, with 26% devoted to each
 platform. 
 
-On the view side, about 12% code is shared, with 44-43% devoted to each
+On the view side, about 12% code is shared, with 88% devoted to each
 platform.
 
 Of course, these proportions will change, depending on additional app features
