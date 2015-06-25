@@ -23,6 +23,55 @@ gulp server
 
 Here are some notes to myself (and others) as I bungle my way through this.
 
+### Code sharing
+
+One of the goals of this thing is to see how much code can be shared between
+platforms using React for web and React Native. So, I counted some lines of
+code.
+
+On the model side, about 74% code is shared, with 12-14% devoted to each
+platform. 
+
+On the view side, about 12% code is shared, with 44-43% devoted to each
+platform.
+
+Of course, these proportions will change, depending on additional app features
+and my ability to spot code worth refactoring into the shared code modules.
+
+```
+# Total LoC for models = 215
+$ cat lib/models/**/*.js | wc -l
+     215
+
+# ~74% common model code
+$ cat lib/models/*js | wc -l
+     159
+
+# ~12% iOS specific model code
+$ cat lib/models/ios/*js | wc -l
+      25
+
+# ~14% web specific model code
+$ cat lib/models/web/*js | wc -l
+      31
+
+# Total LoC for views = 533
+$ cat lib/views/**/*.js | wc -l
+     533
+
+# ~12% common view code
+$ cat lib/views/*js | wc -l
+      67
+
+# ~44% iOS specific view code
+$ cat lib/views/ios/*js | wc -l
+     235
+
+# ~43% web specific view code     
+$ cat lib/views/web/*js | wc -l
+     231
+```
+
 ### TODO / Questions
 
 * Deploy web app to gh-pages
