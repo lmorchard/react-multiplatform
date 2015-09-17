@@ -5,7 +5,6 @@ var connect = require('gulp-connect');
 var gulp = require('gulp');
 var path = require('path');
 var babelify = require("babelify");
-var reactify = require('reactify');
 var uglify = require('gulp-uglify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
@@ -26,7 +25,7 @@ gulp.task('watch', function () {
   ], ['copy-assets']);
   gulp.watch('./lib/**/*.js', ['build']);
   gulp.watch('./index.web.js', ['build']);
-  gulp.watch('./web-dist/*', ['deploy-fxos']);
+  //gulp.watch('./web-dist/*', ['deploy-fxos']);
 });
 
 gulp.task('web-build', [ 'copy-assets', 'browserify-index' ]);
@@ -34,7 +33,6 @@ gulp.task('web-build', [ 'copy-assets', 'browserify-index' ]);
 gulp.task('browserify-index', function () {
   return browserify({ entries: ['./index.web.js'], debug: true })
     .transform(babelify)
-    .transform(reactify) // Unnecessary? babel handles this?
     .bundle()
     .pipe(source('index.web.js'))
     .pipe(buffer())
@@ -60,7 +58,7 @@ gulp.task('connect', function() {
   });
 });
 
-gulp.task('deploy-fxos', function() {
+if (false) gulp.task('deploy-fxos', function() {
 
   var appPath = 'web-dist';
   var client, appId;

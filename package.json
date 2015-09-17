@@ -1,10 +1,11 @@
 {
   "name": "react-multiplatform",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "This is an experiment to build a React web app and a React Native iOS app that share as much as possible.",
   "main": "index.js",
   "scripts": {
+    "start": "node_modules/react-native/packager/packager.sh",
     "test": "echo \"Error: no test specified\" && exit 1",
     "packager": "node_modules/react-native/packager/packager.sh"
   },
@@ -19,25 +20,24 @@
   },
   "homepage": "https://github.com/lmorchard/react-multiplatform",
   "dependencies": {
-    "ampersand-collection": "^1.3.16",
-    "ampersand-router": "^1.0.5",
-    "ampersand-state": "^4.3.12",
-    "ampersand-subcollection": "^1.4.5",
+    "ampersand-collection": "^1.5.0",
+    "ampersand-router": "^3.0.2",
+    "ampersand-state": "^4.6.0",
+    "ampersand-subcollection": "^2.0.3",
     "debounce": "^1.0.0",
-    "lodash": "^3.9.3",
+    "lodash": "^3.10.1",
     "react": "^0.13.3",
-    "react-native": "^0.4.4"
+    "react-native": "^0.11.0"
   },
   "devDependencies": {
-    "babel": "^5.4.7",
-    "babelify": "^6.1.2",
-    "browserify": "^10.2.3",
-    "es6-promise": "^2.2.0",
+    "babel": "^5.8.23",
+    "babelify": "^6.3.0",
+    "browserify": "^11.1.0",
+    "es6-promise": "^3.0.2",
     "gulp": "^3.9.0",
     "gulp-connect": "^2.2.0",
-    "gulp-uglify": "^1.2.0",
+    "gulp-uglify": "^1.4.1",
     "node-firefox": "^0.1.0",
-    "reactify": "^1.1.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "vinyl-transform": "^1.0.0"
