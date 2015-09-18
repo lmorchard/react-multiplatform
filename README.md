@@ -27,49 +27,31 @@ Here are some notes to myself (and others) as I bungle my way through this.
 
 One of the goals of this thing is to see how much code can be shared between
 platforms using React for web and React Native. So, I counted some lines of
-code.
-
-On the model side, about 74% code is shared, with 26% devoted to each
-platform. 
-
-On the view side, about 12% code is shared, with 88% devoted to each
-platform.
-
-Of course, these proportions will change, depending on additional app features
-and my ability to spot code worth refactoring into the shared code modules.
+code using `loc-metrics.sh`:
 
 ```
-# Total LoC for models = 215
-$ cat lib/models/**/*.js | wc -l
+Total LoC
+     979
+All models LoC
      215
-
-# ~74% common model code
-$ cat lib/models/*js | wc -l
+Common shared models LoC
      159
-
-# ~12% iOS specific model code
-$ cat lib/models/ios/*js | wc -l
-      25
-
-# ~14% web specific model code
-$ cat lib/models/web/*js | wc -l
+Web specific models LoC
       31
-
-# Total LoC for views = 533
-$ cat lib/views/**/*.js | wc -l
-     533
-
-# ~12% common view code
-$ cat lib/views/*js | wc -l
-      67
-
-# ~44% iOS specific view code
-$ cat lib/views/ios/*js | wc -l
-     235
-
-# ~43% web specific view code     
-$ cat lib/views/web/*js | wc -l
-     231
+Native specific models LoC
+      25
+All views LoC
+     764
+Common shared views LoC
+      75
+Web specific views LoC
+     233
+Native shared views LoC
+      90
+iOS specific views LoC
+     159
+Android specific views LoC
+     207
 ```
 
 ### TODO / Questions
