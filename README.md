@@ -29,8 +29,8 @@ One of the goals of this thing is to see how much code can be shared between
 platforms using React for web and React Native. So, I counted some lines of
 code using `loc-metrics.sh`:
 
-![Views](https://raw.githubusercontent.com/lmorchard/react-multiplatform/master/shared-views.svg)
-![Models](https://raw.githubusercontent.com/lmorchard/react-multiplatform/master/shared-models.svg)
+![Views](https://cdn.rawgit.com/lmorchard/react-multiplatform/master/shared-views.svg)
+![Models](https://cdn.rawgit.com/lmorchard/react-multiplatform/master/shared-models.svg)
 
 ### TODO / Questions
 
