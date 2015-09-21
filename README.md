@@ -29,30 +29,8 @@ One of the goals of this thing is to see how much code can be shared between
 platforms using React for web and React Native. So, I counted some lines of
 code using `loc-metrics.sh`:
 
-```
-Total LoC
-     979
-All models LoC
-     215
-Common shared models LoC
-     159
-Web specific models LoC
-      31
-Native specific models LoC
-      25
-All views LoC
-     764
-Common shared views LoC
-      75
-Web specific views LoC
-     233
-Native shared views LoC
-      90
-iOS specific views LoC
-     159
-Android specific views LoC
-     207
-```
+![Views](https://raw.githubusercontent.com/lmorchard/react-multiplatform/master/shared-views.svg)
+![Models](https://raw.githubusercontent.com/lmorchard/react-multiplatform/master/shared-models.svg)
 
 ### TODO / Questions
 
@@ -79,10 +57,6 @@ Android specific views LoC
   * Add websocket sync to a multiplayer server for the hell of it?
 
   * Geo for place-specific todos?
-
-* Where's Android? Unreleased, but under development?
-
-  * [Looks like ETA is 6 months or so](http://facebook.github.io/react/blog/2015/03/30/community-roundup-26.html)
 
 * Building & launching the iOS dev app requires launching XCode. I wonder if I
   could just run that all from the command line, ideally from gulp
