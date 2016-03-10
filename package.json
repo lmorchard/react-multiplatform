@@ -1,45 +1,34 @@
 {
   "name": "react-multiplatform",
-  "version": "1.1.0",
-  "private": true,
   "description": "This is an experiment to build a React web app and a React Native iOS app that share as much as possible.",
-  "main": "index.js",
+  "version": "2.0.1",
+  "private": true,
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "packager": "node_modules/react-native/packager/packager.sh"
+    "android": "node_modules/.bin/react-native run-android",
+    "ios": "node_modules/.bin/react-native run-ios",
+    "web": "node_modules/.bin/webpack-dev-server --progress --colors",
+    "webpack": "node_modules/.bin/webpack --progress --colors"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lmorchard/react-multiplatform.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lmorchard/react-multiplatform/issues"
-  },
-  "homepage": "https://github.com/lmorchard/react-multiplatform",
   "dependencies": {
-    "ampersand-collection": "^1.5.0",
+    "ampersand-collection": "^1.6.1",
     "ampersand-router": "^3.0.2",
-    "ampersand-state": "^4.6.0",
+    "ampersand-state": "^5.0.0",
     "ampersand-subcollection": "^2.0.3",
     "debounce": "^1.0.0",
-    "lodash": "^3.10.1",
-    "react": "^0.13.3",
-    "react-native": "^0.11.0"
+    "lodash": "^4.6.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-native": "^0.21.0"
   },
   "devDependencies": {
-    "babel": "^5.8.23",
-    "babelify": "^6.3.0",
-    "browserify": "^11.1.0",
-    "es6-promise": "^3.0.2",
-    "gulp": "^3.9.0",
-    "gulp-connect": "^2.2.0",
-    "gulp-uglify": "^1.4.1",
-    "node-firefox": "^0.1.0",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "vinyl-transform": "^1.0.0"
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "json-loader": "^0.5.4",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
   }
 }

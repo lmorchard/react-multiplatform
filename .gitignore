@@ -32,3 +32,5 @@ node_modules/
 npm-debug.log
 
 .gradle
+
+*.bundle.js
